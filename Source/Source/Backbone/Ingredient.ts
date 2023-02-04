@@ -1,21 +1,16 @@
 import { Knife } from './Utensils'
-import { Wait } from './Util'
 
 
 
 export abstract class Ingredient
 {
-	Cut(knife: Knife): Promise<void>
+	Cut(knife: Knife): void
 	{
-		const Time: number = 10 * 1000
 
-		return Wait(Time)
 	}
 
-	Wash(): Promise<void>
+	Wash(): void
 	{
-		const Time: number = 10 * 1000
 
-		return Wait(Time)
 	}
 }

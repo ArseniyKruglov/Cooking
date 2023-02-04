@@ -1,7 +1,6 @@
 import { Dish } from './Dish'
 import { Ingredient } from './Ingredient'
 import { Utensil } from './Utensil'
-import { Wait } from './Util'
 
 
 
@@ -10,21 +9,14 @@ export class Pan extends Utensil
 	Content: Ingredient[] = []
 	Lid: Lid = new Lid()
 
-	Put(ingredient: Ingredient): Promise<void>
+	Put(ingredient: Ingredient): void
 	{
-		this.Content.push(ingredient)
 
-
-		const Time: number = 15 * 1000
-
-		return Wait(Time)
 	}
 
-	Mix(): Promise<void>
+	Mix(): void
 	{
-		const Time: number = 10 * 1000
 
-		return Wait(Time)
 	}
 
 	Fire(Time: number): Promise<Dish>
@@ -38,18 +30,14 @@ export class Pan extends Utensil
 
 class Lid
 {
-	Open(): Promise<void>
+	Open(): void
 	{
-		const Time: number = 10 * 1000
 
-		return Wait(Time)
 	}
 
-	Close(): Promise<void>
+	Close(): void
 	{
-		const Time: number = 10 * 1000
 
-		return Wait(Time)
 	}
 }
 

@@ -6,8 +6,6 @@ import { Knife, Pan } from '../Backbone/Utensils'
 
 export class StewedMeatWithVegitables extends Dish
 {
-	static Time: number = 30 * 60 * 1000
-
 	static async Cook(): Promise<Dish>
 	{
 		const pan: Pan = new Pan()
@@ -16,39 +14,40 @@ export class StewedMeatWithVegitables extends Dish
 
 
 		const bulbOnions: BulbOnions = new BulbOnions()
-		await bulbOnions.Cut(knife)		// На кубики
-		await pan.Put(bulbOnions)
-		await pan.Mix()
+		bulbOnions.Cut(knife)					// Cut into cubes
+		pan.Put(bulbOnions)
+		pan.Mix()
 
 		setInterval(() => { pan.Mix() }, 60 * 1000)
 
 		const rawMeat: RawMeat = new RawMeat()
-		await rawMeat.Wash()
-		await rawMeat.Cut(knife)
-		await pan.Put(rawMeat)
-		await pan.Mix()
+		rawMeat.Wash()
+		rawMeat.Cut(knife)
+		pan.Put(rawMeat)
+		pan.Mix()
 
-		await pan.Put(new Salt())
-		await pan.Put(new (Chicken.prototype.isPrototypeOf(rawMeat) ? Curry : Spice)())
+		pan.Put(new Salt())
+		pan.Put(new (Chicken.prototype.isPrototypeOf(rawMeat) ? Curry : Spice)())
 
 		const potato: Potato = new Potato()
-		await potato.Cut(knife)			// 1 см на 1 см
-		await pan.Put(potato)
-		await pan.Put(new Salt())
-		await pan.Mix()
+		potato.Cut(knife)					// 1 cm by 1 cm
+		pan.Put(potato)
+		pan.Put(new Salt())
+		pan.Mix()
 
 		const frozenVegetables: FrozenVegetables = new FrozenVegetables()
-		await pan.Put(frozenVegetables)
-		await pan.Mix()
+		pan.Put(frozenVegetables)
+		pan.Mix()
 
 		const sourCream: SourCream = new SourCream()
-		await pan.Put(sourCream)		// Столовая ложка
-		await pan.Mix()
+		pan.Put(sourCream)					// Tablespoon
+		pan.Mix()
 
 
 
-		await pan.Lid.Close()
+		pan.Lid.Close()
 
-		return pan.Fire(StewedMeatWithVegitables.Time)
+		const Time: number = 30 * 60 * 1000
+		return pan.Fire(Time)
 	}
 }
