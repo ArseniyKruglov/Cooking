@@ -20,42 +20,42 @@ export class StewedMeatWithVegitables extends Dish
 	): Promise<Dish>
 	{
 		// Bulb onions
-		bulbOnions.cut(knife)					// TODO: Cut into cubes
-		pan.put(bulbOnions)
-		pan.mix()
+		bulbOnions.Cut(knife)					// TODO: Cut into cubes
+		pan.Put(bulbOnions)
+		pan.Mix()
 
 		// Start mixing every minute
-		setInterval(() => { pan.mix() }, 60 * 1000)
+		setInterval(() => { pan.Mix() }, 60 * 1000)
 
 		// Raw meat
-		rawMeat.wash()
-		rawMeat.cut(knife)
-		pan.put(rawMeat)
-		pan.mix()
+		rawMeat.Wash()
+		rawMeat.Cut(knife)
+		pan.Put(rawMeat)
+		pan.Mix()
 
 		// Spices
-		pan.put(salt)
-		pan.put(spice)
+		pan.Put(salt)
+		pan.Put(spice)
 
 		// Potato
-		potato.cut(knife)					// TODO: 1 cm by 1 cm
-		pan.put(potato)
-		pan.put(salt)
-		pan.mix()
+		potato.Cut(knife)					// TODO: 1 cm by 1 cm
+		pan.Put(potato)
+		pan.Put(salt)
+		pan.Mix()
 
 		// Frozen vegetables
-		pan.put(frozenVegetables)
-		pan.mix()
+		pan.Put(frozenVegetables)
+		pan.Mix()
 
 		// Sour cream
-		pan.put(sourCream)					// TODO: Tablespoon
-		pan.mix()
+		pan.Put(sourCream)					// TODO: Tablespoon
+		pan.Mix()
 
 
 
-		pan.lid.close()
+		pan.Lid.Close()
 
 		const cookTime: number = 30 * 60 * 1000
-		return pan.fire(cookTime, 225)
+		return pan.Fire(cookTime, 225)
 	}
 }

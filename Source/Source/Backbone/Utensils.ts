@@ -6,20 +6,20 @@ import { Utensil } from './Utensil'
 
 export class Pan extends Utensil
 {
-	content: Ingredient[] = []
-	lid: Lid = new Lid()
+	Content: Ingredient[] = []
+	Lid: Lid = new Lid()
 
-	put(ingredient: Ingredient): void		// TODO: Amount
+	Put(ingredient: Ingredient): void		// TODO: Amount
 	{
 
 	}
 
-	mix(): void
+	Mix(): void
 	{
 
 	}
 
-	fire(time: number, angle: number): Promise<Dish>
+	Fire(time: number, angle: number): Promise<Dish>
 	{
 		return new Promise((Resolve) =>
 		{
@@ -30,12 +30,12 @@ export class Pan extends Utensil
 
 class Lid
 {
-	open(): void
+	Open(): void
 	{
 
 	}
 
-	close(): void
+	Close(): void
 	{
 
 	}
