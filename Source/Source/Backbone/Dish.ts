@@ -1,6 +1,6 @@
 export class Dish
 {
-	Eat(): void
+	eat(): void
 	{
 
 	}

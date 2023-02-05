@@ -1,4 +1,4 @@
-import { BulbOnions, Chicken, Curry, FrozenVegetables, Potato, RawMeat, Salt, SourCream, Spice } from '../Backbone/Ingredients'
+import { BulbOnions, FrozenVegetables, Potato, RawMeat, Salt, SourCream, Spice } from '../Backbone/Ingredients'
 import { Dish } from '../Backbone/Dish'
 import { Knife, Pan } from '../Backbone/Utensils'
 
@@ -6,48 +6,56 @@ import { Knife, Pan } from '../Backbone/Utensils'
 
 export class StewedMeatWithVegitables extends Dish
 {
-	static async Cook(): Promise<Dish>
+	static cook
+	(
+		pan: Pan,
+		knife: Knife,
+		bulbOnions: BulbOnions,
+		rawMeat: RawMeat,
+		salt: Salt,
+		spice: Spice,
+		potato: Potato,
+		frozenVegetables: FrozenVegetables,
+		sourCream: SourCream
+	): Promise<Dish>
 	{
-		const pan: Pan = new Pan()
-		const knife: Knife = new Knife()
+		// Bulb onions
+		bulbOnions.cut(knife)					// TODO: Cut into cubes
+		pan.put(bulbOnions)
+		pan.mix()
+
+		// Start mixing every minute
+		setInterval(() => { pan.mix() }, 60 * 1000)
+
+		// Raw meat
+		rawMeat.wash()
+		rawMeat.cut(knife)
+		pan.put(rawMeat)
+		pan.mix()
+
+		// Spices
+		pan.put(salt)
+		pan.put(spice)
+
+		// Potato
+		potato.cut(knife)					// TODO: 1 cm by 1 cm
+		pan.put(potato)
+		pan.put(salt)
+		pan.mix()
+
+		// Frozen vegetables
+		pan.put(frozenVegetables)
+		pan.mix()
+
+		// Sour cream
+		pan.put(sourCream)					// TODO: Tablespoon
+		pan.mix()
 
 
 
-		const bulbOnions: BulbOnions = new BulbOnions()
-		bulbOnions.Cut(knife)					// Cut into cubes
-		pan.Put(bulbOnions)
-		pan.Mix()
+		pan.lid.close()
 
-		setInterval(() => { pan.Mix() }, 60 * 1000)
-
-		const rawMeat: RawMeat = new RawMeat()
-		rawMeat.Wash()
-		rawMeat.Cut(knife)
-		pan.Put(rawMeat)
-		pan.Mix()
-
-		pan.Put(new Salt())
-		pan.Put(new (Chicken.prototype.isPrototypeOf(rawMeat) ? Curry : Spice)())
-
-		const potato: Potato = new Potato()
-		potato.Cut(knife)					// 1 cm by 1 cm
-		pan.Put(potato)
-		pan.Put(new Salt())
-		pan.Mix()
-
-		const frozenVegetables: FrozenVegetables = new FrozenVegetables()
-		pan.Put(frozenVegetables)
-		pan.Mix()
-
-		const sourCream: SourCream = new SourCream()
-		pan.Put(sourCream)					// Tablespoon
-		pan.Mix()
-
-
-
-		pan.Lid.Close()
-
-		const Time: number = 30 * 60 * 1000
-		return pan.Fire(Time)
+		const cookTime: number = 30 * 60 * 1000
+		return pan.fire(cookTime, 225)
 	}
 }
